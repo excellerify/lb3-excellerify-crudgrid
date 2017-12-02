@@ -1,6 +1,6 @@
 {
   "name": "lb3-excellerify-crudgrid-mixin",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "loopback 3 excellerify CRUD Grid endpoint and schema resolver",
   "main": "index.js",
   "homepage": "https://github.com/excellerify/lb3-excellerify-crudgrid-mixin",

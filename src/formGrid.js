@@ -1,5 +1,5 @@
-var path = require('path');
-const errors = require('loopback-common-errors');
+var path = require("path");
+const errors = require("loopback-common-errors");
 
 function lowercaseFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1);
@@ -10,8 +10,7 @@ module.exports = function(Model, options) {
 
   if (!Model.form && options.form != false) {
     const formSchema = require(path.resolve(
-      __dirname,
-      `../models/${modelName}/form.json`
+      `./common/models/${modelName}/form.json`
     ));
 
     Model.form = function(id, cb) {
@@ -21,7 +20,7 @@ module.exports = function(Model, options) {
           include = options.form.include;
         }
 
-        Model.findById(id, {include}).then(
+        Model.findById(id, { include }).then(
           res => {
             if (!res) {
               cb(errors.notFound());
@@ -30,7 +29,7 @@ module.exports = function(Model, options) {
 
             cb(null, {
               fields: formSchema.fields,
-              model: res,
+              model: res
             });
           },
           err => cb(err)
@@ -40,43 +39,42 @@ module.exports = function(Model, options) {
       }
     };
 
-    Model.remoteMethod('form', {
+    Model.remoteMethod("form", {
       accepts: {
-        arg: 'id',
-        type: 'any',
+        arg: "id",
+        type: "any"
       },
       http: {
-        verb: 'get',
+        verb: "get"
       },
       returns: {
-        arg: 'schema',
-        type: 'object',
-      },
+        arg: "schema",
+        type: "object"
+      }
     });
   }
 
   if (!Model.grid && options.grid != false) {
     const gridSchema = require(path.resolve(
-      __dirname,
-      `../models/${modelName}/grid.json`
+      `./common/models/${modelName}/grid.json`
     ));
 
     Model.grid = function(ignore, cb) {
       cb(null, gridSchema);
     };
 
-    Model.remoteMethod('grid', {
+    Model.remoteMethod("grid", {
       accepts: {
-        arg: 'id',
-        type: 'any',
+        arg: "id",
+        type: "any"
       },
       http: {
-        verb: 'get',
+        verb: "get"
       },
       returns: {
-        arg: 'schema',
-        type: 'string',
-      },
+        arg: "schema",
+        type: "string"
+      }
     });
   }
 };
