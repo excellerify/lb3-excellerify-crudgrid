@@ -1,7 +1,7 @@
 
 
 import { deprecate } from 'util';
-import formGrid from './src/formGrid';
+import formGrid from './formGrid';
 
 export default deprecate((app) => {
   app.loopback.modelBuilder.mixins.define('FormGrid', formGrid);

@@ -48,7 +48,6 @@ Add the mixins property to your server/model-config.json:
           }
         ]
       },
-      // to disable grid
       "grid": false
     }
   },
