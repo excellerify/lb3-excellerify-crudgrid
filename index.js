@@ -1,10 +1,10 @@
 
 
 import { deprecate } from 'util';
-import formGrid from './formGrid';
+import crudGrid from './crudGrid';
 
 export default deprecate((app) => {
-  app.loopback.modelBuilder.mixins.define('FormGrid', formGrid);
+  app.loopback.modelBuilder.mixins.define('CrudGrid', CrudGrid);
 }, 'DEPRECATED: Use mixinSources, see https://github.com/excellerify/lb3-excellerify-crudgrid-mixin');
 
 module.exports = exports.default;
